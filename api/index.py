@@ -29,7 +29,7 @@ async def get_marks(name: List[str] = Query(None)):
                      if student["name"].lower() == student_name.lower()), None)
         marks.append(mark)
 
-    return {"marks": marks}
+    return json({ "marks": marks })
 
 @app.get("/")
 async def root():
