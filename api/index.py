@@ -27,7 +27,7 @@ async def get_marks(name: List[str] = Query(None)):
         if i["name"] in name:
             marks.append(i["marks"])
 
-    return json.dumps({ "marks": marks })
+    return { "marks": marks }
 
 @app.get("/")
 async def root():
