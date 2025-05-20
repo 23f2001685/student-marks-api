@@ -23,13 +23,13 @@ async def get_marks(name: List[str] = Query(None)):
         return {"error": "Please provide at least one name"}
 
     marks = []
-    for i in students_data:
-        if i["name"] in name:
-            marks.append(i["marks"])
+    for student_name in name:
+        # Look for the student in the data
+        mark = next((student["marks"] for student in students_data
+                     if student["name"].lower() == student_name.lower()), None)
+        marks.append(mark)
 
-    marks = sorted(marks)
-
-    return { "marks": marks }
+    return {"marks": marks}
 
 @app.get("/")
 async def root():
