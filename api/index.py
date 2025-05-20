@@ -27,6 +27,8 @@ async def get_marks(name: List[str] = Query(None)):
         if i["name"] in name:
             marks.append(i["marks"])
 
+    marks = sorted(marks)
+
     return { "marks": marks }
 
 @app.get("/")
